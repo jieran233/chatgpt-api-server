@@ -17,3 +17,4 @@ In building this project, we would like to acknowledge the contributions of the 
 
 - [Sxvxgee/UnlimitedGPT](https://github.com/Sxvxgee/UnlimitedGPT)
   - [undetected-chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver)
+- [pallets/flask](https://github.com/pallets/flask)
