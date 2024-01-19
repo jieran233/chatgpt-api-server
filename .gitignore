@@ -244,3 +244,4 @@ cython_debug/
 config.test.json
 # Message file for testing
 message.txt
+output.txt

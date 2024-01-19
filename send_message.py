@@ -19,6 +19,9 @@ def main():
     parser.add_argument('--input_mode', default='INSTANT', help='Input mode')
     parser.add_argument('--input_delay', type=float, default=0.1, help='Input delay')
 
+    parser.add_argument('--output_file', default=None,
+                        help='Specify the output file path, or it will be printed to console')
+
     args = parser.parse_args()
     if args.message:
         input_message = args.message
@@ -41,7 +44,11 @@ def main():
     if output_message.failed:
         raise Exception("UnlimitedGPT Failed")
     else:
-        print(output_message.response)
+        if args.output_file:
+            with open(args.output_file, 'w', encoding='utf-8') as f:
+                f.write(output_message.response)
+        else:
+            print(output_message.response)
 
 
 if __name__ == '__main__':
