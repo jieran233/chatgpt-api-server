@@ -243,5 +243,6 @@ cython_debug/
 # Config file for testing
 config.test.json
 # Message file for testing
+prompt.txt
 message.txt
 output.txt

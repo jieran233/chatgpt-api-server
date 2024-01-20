@@ -6,8 +6,8 @@ def main():
     parser = argparse.ArgumentParser()
 
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--message', help='Specify the message')
-    group.add_argument('--message_file', help='Specify the file containing the message')
+    group.add_argument('--message', nargs='+', help='Specify the message')
+    group.add_argument('--message_file', nargs='+', help='Specify the file containing the message')
 
     parser.add_argument('--session_token', required=True,
                         help='The session token for authentication. (required)')
@@ -31,11 +31,14 @@ def main():
                         help='Specify the output file path, or it will be printed to console')
 
     args = parser.parse_args()
+
+    input_messages = []
     if args.message:
-        input_message = args.message
+        input_messages = args.message
     elif args.message_file:
-        with open(args.message_file, 'r', encoding='utf-8') as f:
-            input_message = f.read()
+        for file in args.message_file:
+            with open(file, 'r', encoding='utf-8') as f:
+                input_messages.append(f.read())
 
     bot = Bot(
         session_token=args.session_token,
@@ -48,19 +51,20 @@ def main():
     )
 
     bot.new_chat()
-    output_message = bot.send_message(input_message,
-                                      input_mode=args.input_mode,
-                                      input_delay=args.input_delay,
-                                      timeout=args.timeout)
+    for input_message in input_messages:
+        output_message = bot.send_message(input_message,
+                                          input_mode=args.input_mode,
+                                          input_delay=args.input_delay,
+                                          timeout=args.timeout)
 
-    if output_message.failed:
-        raise Exception("UnlimitedGPT Failed")
-    else:
-        if args.output_file:
-            with open(args.output_file, 'w', encoding='utf-8') as f:
-                f.write(output_message.response)
+        if output_message.failed:
+            raise Exception("UnlimitedGPT Failed")
         else:
-            print(output_message.response)
+            if args.output_file:
+                with open(args.output_file, 'w', encoding='utf-8') as f:
+                    f.write(output_message.response)
+            else:
+                print(output_message.response)
 
 
 if __name__ == '__main__':
