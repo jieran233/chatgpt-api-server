@@ -40,7 +40,8 @@ def main():
             bot.new_chat()
             output_message = bot.send_message(input_message,
                                               input_mode=config['ChatGPT']['send_message']['input_mode'],
-                                              input_delay=config['ChatGPT']['send_message']['input_delay'])
+                                              input_delay=config['ChatGPT']['send_message']['input_delay'],
+                                              timeout=config['ChatGPT']['send_message']['timeout'])
 
             if output_message.failed:
                 response['status']['failed'] = True

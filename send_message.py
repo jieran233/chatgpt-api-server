@@ -25,6 +25,7 @@ def main():
 
     parser.add_argument('--input_mode', default='INSTANT', help='The input mode. Defaults to \'INSTANT\'.')
     parser.add_argument('--input_delay', type=float, default=0.1, help='The input delay. Defaults to 0.1.')
+    parser.add_argument('--timeout', type=int, default=240, help='Timeout in seconds. Defaults to 240.')
 
     parser.add_argument('--output_file', default=None,
                         help='Specify the output file path, or it will be printed to console')
@@ -47,7 +48,10 @@ def main():
     )
 
     bot.new_chat()
-    output_message = bot.send_message(input_message, input_mode=args.input_mode, input_delay=args.input_delay)
+    output_message = bot.send_message(input_message,
+                                      input_mode=args.input_mode,
+                                      input_delay=args.input_delay,
+                                      timeout=args.timeout)
 
     if output_message.failed:
         raise Exception("UnlimitedGPT Failed")

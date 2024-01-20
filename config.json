@@ -9,7 +9,8 @@
     "headless": false,
     "send_message": {
       "input_mode": "INSTANT",
-      "input_delay": 0.1
+      "input_delay": 0.1,
+      "timeout": 240
     }
   }
 }
