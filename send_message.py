@@ -16,6 +16,8 @@ def main():
     parser.add_argument('--chrome_args', default=None, help='Chrome arguments')
     parser.add_argument('--disable_moderation', action='store_true', help='Disable moderation')
     parser.add_argument('--verbose', action='store_true', help='Verbose mode')
+    parser.add_argument('--headless', action='store_true', help='Headless mode')
+
     parser.add_argument('--input_mode', default='INSTANT', help='Input mode')
     parser.add_argument('--input_delay', type=float, default=0.1, help='Input delay')
 
@@ -36,6 +38,7 @@ def main():
         chrome_args=args.chrome_args,
         disable_moderation=args.disable_moderation,
         verbose=args.verbose,
+        headless=args.headless
     )
 
     bot.new_chat()
