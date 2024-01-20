@@ -11,8 +11,8 @@ def main():
 
     parser.add_argument('--session_token', required=True,
                         help='The session token for authentication. (required)')
-    parser.add_argument('--conversation_id', required=True,
-                        help='The conversation ID. (required)')
+    parser.add_argument('--conversation_id', default='',
+                        help='The conversation ID. Defaults to \'\'.')
 
     parser.add_argument('--proxy', default=None, help='The proxy server URL. Defaults to None.')
     parser.add_argument('--chrome_args', default=None, help='Chrome arguments')
