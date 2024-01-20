@@ -16,5 +16,12 @@ class Bot(ChatGPT):
         if not clicked:
             self.logger.debug(f"{button[1]} button not found")
             return self._get_out_of_menu()
-        self.driver.refresh()
         self.logger.debug("New chat created")
+
+    def refresh(self) -> None:
+        """
+        Refresh webpage.
+        """
+        self.logger.debug("Refreshing...")
+        self.driver.refresh()
+        self.logger.debug("Refreshed")
