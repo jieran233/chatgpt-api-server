@@ -6,6 +6,7 @@
     "chrome_args": null,
     "disable_moderation": false,
     "verbose": false,
+    "headless": false,
     "send_message": {
       "input_mode": "INSTANT",
       "input_delay": 0.1

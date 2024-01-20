@@ -25,6 +25,7 @@ def main():
         chrome_args=config['ChatGPT']['chrome_args'],
         disable_moderation=config['ChatGPT']['disable_moderation'],
         verbose=config['ChatGPT']['verbose'],
+        headless=config['ChatGPT']['headless']
     )
 
     app = Flask(__name__)
