@@ -9,17 +9,22 @@ def main():
     group.add_argument('--message', help='Specify the message')
     group.add_argument('--message_file', help='Specify the file containing the message')
 
-    parser.add_argument('--session_token', required=True, help='Session token (required)')
-    parser.add_argument('--conversation_id', required=True, help='Conversation ID (required)')
+    parser.add_argument('--session_token', required=True,
+                        help='The session token for authentication. (required)')
+    parser.add_argument('--conversation_id', required=True,
+                        help='The conversation ID. (required)')
 
-    parser.add_argument('--proxy', default=None, help='Proxy setting')
+    parser.add_argument('--proxy', default=None, help='The proxy server URL. Defaults to None.')
     parser.add_argument('--chrome_args', default=None, help='Chrome arguments')
-    parser.add_argument('--disable_moderation', action='store_true', help='Disable moderation')
-    parser.add_argument('--verbose', action='store_true', help='Verbose mode')
-    parser.add_argument('--headless', action='store_true', help='Headless mode')
+    parser.add_argument('--disable_moderation', action='store_true',
+                        help='Whether to disable moderation. Defaults to False.')
+    parser.add_argument('--verbose', action='store_true',
+                        help='Whether to enable verbose logging. Defaults to False.')
+    parser.add_argument('--headless', action='store_true',
+                        help='Whether to run the browser in headless mode. Defaults to False.')
 
-    parser.add_argument('--input_mode', default='INSTANT', help='Input mode')
-    parser.add_argument('--input_delay', type=float, default=0.1, help='Input delay')
+    parser.add_argument('--input_mode', default='INSTANT', help='The input mode. Defaults to \'INSTANT\'.')
+    parser.add_argument('--input_delay', type=float, default=0.1, help='The input delay. Defaults to 0.1.')
 
     parser.add_argument('--output_file', default=None,
                         help='Specify the output file path, or it will be printed to console')
